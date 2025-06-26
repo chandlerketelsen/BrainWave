@@ -1,0 +1,3 @@
+# BrainWave Analytics: Parking Insights for Local Restraunts and Businesses
+
+As a Research and Development group, BrainWave Analytics is an initiative . To deliver actionable insights to non-chain restaurants in the Puget Sound, BrainWave uses proprietary machine learning pipelines to isolate information that matters to business decision-makers. Ketelsen Computing is equipped with enterprise-grade UAS systems and a team of computer engineers, BrainWave has the talent and equpment needed to bring today's local businesses an edge over large restaurant chains. Our cornerstone pilot project is called ParkGNN; it's a gamified Business Analytics platform for visualizing real-time business activity to inspire confidence into marketing and engagement activities. 
