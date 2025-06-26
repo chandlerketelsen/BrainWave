@@ -1,3 +1,13 @@
-# BrainWave Analytics: Parking Insights for Local Restraunts and Businesses
+# 🧠 Project Overview
 
-As a Research and Development group, BrainWave Analytics is an initiative . To deliver actionable insights to non-chain restaurants in the Puget Sound, BrainWave uses proprietary machine learning pipelines to isolate information that matters to business decision-makers. Ketelsen Computing is equipped with enterprise-grade UAS systems and a team of computer engineers, BrainWave has the talent and equpment needed to bring today's local businesses an edge over large restaurant chains. Our cornerstone pilot project is called ParkGNN; it's a gamified Business Analytics platform for visualizing real-time business activity to inspire confidence into marketing and engagement activities. 
+Welcome to the BrainWave Analytics team repository! This repository houses the collective work of the BrainWave Analytics team, focused on developing cutting-edge solutions for analyzing brainwave data. Our mission is to transform raw EEG signals into actionable insights, enabling advancements in neuroscience, healthcare, and human-computer interaction.
+
+This repository serves as a central hub for our code, documentation, and collaborative efforts. Here you'll find:
+
+Core Libraries: Reusable modules for data acquisition, preprocessing, feature extraction, and machine learning models.
+
+Research Projects: Dedicated directories for ongoing research initiatives, each with its own specific goals and methodologies.
+
+Tools & Utilities: Scripts and applications to assist in development, testing, and deployment.
+
+Documentation: Detailed guides, API references, and best practices for team members.
