@@ -1,13 +1,15 @@
 # 🧠 Project Overview
+BrainWave is the flagship analytics framework developed by Ketelsen Computing, LLC, purpose-built to extract structured intelligence from drone-collected video data. Focused on high-impact applications such as parking lot monitoring, infrastructure forecasting, and spatio-temporal scene analysis, BrainWave transforms raw imagery into predictive insights through a modular pipeline of computer vision, object tracking, and graph neural network modeling.
 
-Welcome to the BrainWave Analytics team repository! This repository houses the collective work of the BrainWave Analytics team, focused on developing cutting-edge solutions for analyzing brainwave data. Our mission is to transform raw EEG signals into actionable insights, enabling advancements in neuroscience, healthcare, and human-computer interaction.
+This repository is the central workspace for BrainWave’s development — integrating aerial data pipelines, machine learning architectures, and deployment tooling for field-ready solutions.
 
-This repository serves as a central hub for our code, documentation, and collaborative efforts. Here you'll find:
+Inside the Repository:
+Core Modules: Reusable components for video ingestion, object detection, multi-target tracking, scene graph construction, and predictive modeling via ST-GNNs.
 
-Core Libraries: Reusable modules for data acquisition, preprocessing, feature extraction, and machine learning models.
+Projects: Dedicated directories for active deployments — including parking occupancy forecasting, road condition analytics, and custom client solutions.
 
-Research Projects: Dedicated directories for ongoing research initiatives, each with its own specific goals and methodologies.
+Tools & Utilities: Scripts and utilities for batch processing, edge-device integration (e.g. DJI Matrice 30T + iPadOS), and 2.5D visualizations.
 
-Tools & Utilities: Scripts and applications to assist in development, testing, and deployment.
+Documentation: API references, architectural diagrams, and onboarding materials for team members and contributors.
 
-Documentation: Detailed guides, API references, and best practices for team members.
+BrainWave represents Ketelsen Computing’s commitment to turning drones into decision engines — uniting aerial data and AI to forecast, inform, and optimize.
