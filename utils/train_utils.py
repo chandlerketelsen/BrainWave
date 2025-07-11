@@ -23,7 +23,7 @@ def load_checkpoint(filepath, model, optimizer, scheduler):
     val_losses = checkpoint['val_losses']
     return model, optimizer, scheduler, start_epoch, train_losses, val_losses
 
-def train_loop(train_loader, model, criterion, optimizer, device, autoclipper=None, verbose=True):
+def train_loop(train_loader, model, criterion, optimizer, device, verbose=True):
     model.train()
     total_loss = 0.0
     num_batches = len(train_loader)
@@ -40,8 +40,6 @@ def train_loop(train_loader, model, criterion, optimizer, device, autoclipper=No
         loss = criterion(out, y)
 
         loss.backward()
-        if autoclipper:
-            autoclipper(model)
         optimizer.step()
 
         total_loss += loss.item()
