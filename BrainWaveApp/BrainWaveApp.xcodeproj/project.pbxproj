@@ -1,0 +1,563 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXContainerItemProxy section */
+		CB4E1F2E2E22EB3300B45F57 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CB4E1F182E22EB3200B45F57 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CB4E1F1F2E22EB3200B45F57;
+			remoteInfo = BrainWaveApp;
+		};
+		CB4E1F382E22EB3300B45F57 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CB4E1F182E22EB3200B45F57 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CB4E1F1F2E22EB3200B45F57;
+			remoteInfo = BrainWaveApp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		CB4E1F202E22EB3200B45F57 /* BrainWaveApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BrainWaveApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB4E1F2D2E22EB3300B45F57 /* BrainWaveAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BrainWaveAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB4E1F372E22EB3300B45F57 /* BrainWaveAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BrainWaveAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		CB4E1F222E22EB3200B45F57 /* BrainWaveApp */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = BrainWaveApp;
+			sourceTree = "<group>";
+		};
+		CB4E1F302E22EB3300B45F57 /* BrainWaveAppTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = BrainWaveAppTests;
+			sourceTree = "<group>";
+		};
+		CB4E1F3A2E22EB3300B45F57 /* BrainWaveAppUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = BrainWaveAppUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CB4E1F1D2E22EB3200B45F57 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CB4E1F2A2E22EB3300B45F57 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CB4E1F342E22EB3300B45F57 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CB4E1F172E22EB3200B45F57 = {
+			isa = PBXGroup;
+			children = (
+				CB4E1F222E22EB3200B45F57 /* BrainWaveApp */,
+				CB4E1F302E22EB3300B45F57 /* BrainWaveAppTests */,
+				CB4E1F3A2E22EB3300B45F57 /* BrainWaveAppUITests */,
+				CB4E1F212E22EB3200B45F57 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CB4E1F212E22EB3200B45F57 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CB4E1F202E22EB3200B45F57 /* BrainWaveApp.app */,
+				CB4E1F2D2E22EB3300B45F57 /* BrainWaveAppTests.xctest */,
+				CB4E1F372E22EB3300B45F57 /* BrainWaveAppUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CB4E1F1F2E22EB3200B45F57 /* BrainWaveApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CB4E1F412E22EB3300B45F57 /* Build configuration list for PBXNativeTarget "BrainWaveApp" */;
+			buildPhases = (
+				CB4E1F1C2E22EB3200B45F57 /* Sources */,
+				CB4E1F1D2E22EB3200B45F57 /* Frameworks */,
+				CB4E1F1E2E22EB3200B45F57 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				CB4E1F222E22EB3200B45F57 /* BrainWaveApp */,
+			);
+			name = BrainWaveApp;
+			packageProductDependencies = (
+			);
+			productName = BrainWaveApp;
+			productReference = CB4E1F202E22EB3200B45F57 /* BrainWaveApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		CB4E1F2C2E22EB3300B45F57 /* BrainWaveAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CB4E1F442E22EB3300B45F57 /* Build configuration list for PBXNativeTarget "BrainWaveAppTests" */;
+			buildPhases = (
+				CB4E1F292E22EB3300B45F57 /* Sources */,
+				CB4E1F2A2E22EB3300B45F57 /* Frameworks */,
+				CB4E1F2B2E22EB3300B45F57 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CB4E1F2F2E22EB3300B45F57 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				CB4E1F302E22EB3300B45F57 /* BrainWaveAppTests */,
+			);
+			name = BrainWaveAppTests;
+			packageProductDependencies = (
+			);
+			productName = BrainWaveAppTests;
+			productReference = CB4E1F2D2E22EB3300B45F57 /* BrainWaveAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		CB4E1F362E22EB3300B45F57 /* BrainWaveAppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CB4E1F472E22EB3300B45F57 /* Build configuration list for PBXNativeTarget "BrainWaveAppUITests" */;
+			buildPhases = (
+				CB4E1F332E22EB3300B45F57 /* Sources */,
+				CB4E1F342E22EB3300B45F57 /* Frameworks */,
+				CB4E1F352E22EB3300B45F57 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CB4E1F392E22EB3300B45F57 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				CB4E1F3A2E22EB3300B45F57 /* BrainWaveAppUITests */,
+			);
+			name = BrainWaveAppUITests;
+			packageProductDependencies = (
+			);
+			productName = BrainWaveAppUITests;
+			productReference = CB4E1F372E22EB3300B45F57 /* BrainWaveAppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CB4E1F182E22EB3200B45F57 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1640;
+				LastUpgradeCheck = 1640;
+				TargetAttributes = {
+					CB4E1F1F2E22EB3200B45F57 = {
+						CreatedOnToolsVersion = 16.4;
+					};
+					CB4E1F2C2E22EB3300B45F57 = {
+						CreatedOnToolsVersion = 16.4;
+						TestTargetID = CB4E1F1F2E22EB3200B45F57;
+					};
+					CB4E1F362E22EB3300B45F57 = {
+						CreatedOnToolsVersion = 16.4;
+						TestTargetID = CB4E1F1F2E22EB3200B45F57;
+					};
+				};
+			};
+			buildConfigurationList = CB4E1F1B2E22EB3200B45F57 /* Build configuration list for PBXProject "BrainWaveApp" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CB4E1F172E22EB3200B45F57;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = CB4E1F212E22EB3200B45F57 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CB4E1F1F2E22EB3200B45F57 /* BrainWaveApp */,
+				CB4E1F2C2E22EB3300B45F57 /* BrainWaveAppTests */,
+				CB4E1F362E22EB3300B45F57 /* BrainWaveAppUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CB4E1F1E2E22EB3200B45F57 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CB4E1F2B2E22EB3300B45F57 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CB4E1F352E22EB3300B45F57 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CB4E1F1C2E22EB3200B45F57 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CB4E1F292E22EB3300B45F57 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CB4E1F332E22EB3300B45F57 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CB4E1F2F2E22EB3300B45F57 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CB4E1F1F2E22EB3200B45F57 /* BrainWaveApp */;
+			targetProxy = CB4E1F2E2E22EB3300B45F57 /* PBXContainerItemProxy */;
+		};
+		CB4E1F392E22EB3300B45F57 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CB4E1F1F2E22EB3200B45F57 /* BrainWaveApp */;
+			targetProxy = CB4E1F382E22EB3300B45F57 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		CB4E1F3F2E22EB3300B45F57 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = B39HWZXM6K;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		CB4E1F402E22EB3300B45F57 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = B39HWZXM6K;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CB4E1F422E22EB3300B45F57 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = B39HWZXM6K;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ketelsen.BrainWaveApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CB4E1F432E22EB3300B45F57 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = B39HWZXM6K;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ketelsen.BrainWaveApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		CB4E1F452E22EB3300B45F57 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = B39HWZXM6K;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ketelsen.BrainWaveAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BrainWaveApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BrainWaveApp";
+			};
+			name = Debug;
+		};
+		CB4E1F462E22EB3300B45F57 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = B39HWZXM6K;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ketelsen.BrainWaveAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BrainWaveApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BrainWaveApp";
+			};
+			name = Release;
+		};
+		CB4E1F482E22EB3300B45F57 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = B39HWZXM6K;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ketelsen.BrainWaveAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = BrainWaveApp;
+			};
+			name = Debug;
+		};
+		CB4E1F492E22EB3300B45F57 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = B39HWZXM6K;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ketelsen.BrainWaveAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = BrainWaveApp;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CB4E1F1B2E22EB3200B45F57 /* Build configuration list for PBXProject "BrainWaveApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CB4E1F3F2E22EB3300B45F57 /* Debug */,
+				CB4E1F402E22EB3300B45F57 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CB4E1F412E22EB3300B45F57 /* Build configuration list for PBXNativeTarget "BrainWaveApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CB4E1F422E22EB3300B45F57 /* Debug */,
+				CB4E1F432E22EB3300B45F57 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CB4E1F442E22EB3300B45F57 /* Build configuration list for PBXNativeTarget "BrainWaveAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CB4E1F452E22EB3300B45F57 /* Debug */,
+				CB4E1F462E22EB3300B45F57 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CB4E1F472E22EB3300B45F57 /* Build configuration list for PBXNativeTarget "BrainWaveAppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CB4E1F482E22EB3300B45F57 /* Debug */,
+				CB4E1F492E22EB3300B45F57 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CB4E1F182E22EB3200B45F57 /* Project object */;
+}
