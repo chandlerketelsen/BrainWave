@@ -11,7 +11,7 @@ device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 distance_threshold = 75
 train_folder = ""
 val_folder = ""
-sequence_length = 12
+sequence_length = 16
 
 train_data_list = build_graph_dataset(train_folder)
 train_loader = DataLoader(train_data_list, batch_size=batch_size, shuffle=True)
