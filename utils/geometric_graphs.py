@@ -2,21 +2,31 @@ import os
 import pandas as pd
 import numpy as np
 import torch
-from torch_geometric.data import Data, DataLoader
+from torch_geometric.data import Data
 from scipy.spatial import distance_matrix
 
-distance_threshold = 75
-labels_folder = ""
-batch_size = 32
-
-def process_csv(csv_path, dist_threshold):
+def process_csv(csv_path):
     df = pd.read_csv(csv_path)
     df = df.sort_values(by="node_id")
 
-    node_features = torch.tensor(df[["is_handicapped"]].values, dtype=torch.float)
-    labels = torch.tensor(df["is_occupied"].values, dtype=torch.long)
-
+    node_features = df[["is_handicapped"]].values
+    labels = df["is_occupied"].values
     coords = df[["x_pixel", "y_pixel"]].to_numpy()
+
+    return node_features, labels, coords
+
+def process_sequence(csv_paths, dist_threshold=75):
+    feature_seq = []
+
+    for path in csv_paths:
+        features, labels_step, coords = process_csv(path)
+        feature_seq.append(features)
+        labels = labels_step
+
+    feature_seq = np.stack(feature_seq, axis=-1)
+    node_features = torch.tensor(feature_seq, dtype=torch.float)
+    labels = torch.tensor(labels, dtype=torch.long)
+
     dist_mat = distance_matrix(coords, coords)
 
     edge_list = [
@@ -31,15 +41,19 @@ def process_csv(csv_path, dist_threshold):
 
     return Data(x=node_features, edge_index=edge_index, y=labels)
 
-def build_graph_dataset(root_dir):
+def build_graph_dataset(root_dir, distance_threshold=75, sequence_length=16):
     data_list = []
+    csv_paths = []
     for subdir, _, files in os.walk(root_dir):
         for file in files:
             if file.endswith(".csv"):
-                csv_path = os.path.join(subdir, file)
-                data = process_csv(csv_path)
-                data_list.append(data)
-    return data_list
+                csv_paths.append(os.path.join(subdir, file))
 
-data_list = build_graph_dataset(labels_folder)
-loader = DataLoader(data_list, batch_size=batch_size, shuffle=True)
+    csv_paths = sorted(csv_paths)
+
+    for i in range(len(csv_paths) - sequence_length):
+        seq_paths = csv_paths[i:i + sequence_length]
+        data = process_sequence(seq_paths, distance_threshold)
+        data_list.append(data)
+
+    return data_list
