@@ -77,15 +77,15 @@ class ParkingDataService: ObservableObject {
 extension ParkingLotData {
     static let mockData = ParkingLotData(
         id: "mock_lot_1",
-        name: "Downtown Parking Garage",
+        name: "Demo Lot",
         location: Location(
             latitude: 40.7128,
             longitude: -74.0060,
             address: "123 Main St, New York, NY"
         ),
-        capacity: 72,
-        currentOccupancy: 48,
-        timeSeriesData: generateMockTimeSeriesData(),
+        capacity: 8,
+        currentOccupancy: 5,
+        timeSeriesData: [],
         lastUpdated: Date()
     )
     

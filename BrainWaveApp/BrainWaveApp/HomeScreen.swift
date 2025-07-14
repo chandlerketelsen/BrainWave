@@ -55,7 +55,7 @@ struct HomeScreen: View {
                 
                 // Main content area
                 VStack(spacing: 20) {
-                    // 3D Parking Lot Placeholder
+                    // 3D Parking Lot Visualization
                     ZStack {
                         RoundedRectangle(cornerRadius: 20)
                             .fill(
@@ -74,31 +74,11 @@ struct HomeScreen: View {
                             )
                         
                         VStack(spacing: 15) {
-                            // 3D effect placeholder
-                            ZStack {
-                                // Grid pattern for parking lot
-                                VStack(spacing: 8) {
-                                    ForEach(0..<6, id: \.self) { row in
-                                        HStack(spacing: 8) {
-                                            ForEach(0..<8, id: \.self) { col in
-                                                Rectangle()
-                                                    .fill(Color.gray.opacity(0.3))
-                                                    .frame(width: 30, height: 20)
-                                                    .cornerRadius(4)
-                                            }
-                                        }
-                                    }
-                                }
-                                .rotation3DEffect(.degrees(15), axis: (x: 1, y: 0, z: 0))
-                                .scaleEffect(0.8)
-                                
-                                // Overlay text
-                            
-                                Text("3D Parking Lot View")
-                                        .font(.system(size: 18, weight: .bold))
-                                        .foregroundColor(.white)
-                                .padding(.top, 20)
-                            }
+                            // 3D SceneKit Parking Lot
+                            ParkingLot3DView()
+                                .frame(height: 300)
+                                .cornerRadius(15)
+                                .padding(.top, 10)
                             
                             // Stats overlay
                             HStack(spacing: 20) {
