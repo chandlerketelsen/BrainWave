@@ -1,25 +1,21 @@
 import torch
-from torch_geometric.data import DataLoader
+from torch_geometric.loader import DataLoader
 from model.GNN import TemporalGNN
 from utils.train_utils import train_loop, val_loop, save_checkpoint
-from utils.geometric_graphs import build_graph_dataset
+from utils.geometric_graphs import build_dataset
 
 batch_size = 32
 epochs = 30
 device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 
 distance_threshold = 75
-train_folder = ""
-val_folder = ""
 sequence_length = 16
 
-train_data_list = build_graph_dataset(train_folder)
-train_loader = DataLoader(train_data_list, batch_size=batch_size, shuffle=True)
+train_loader, val_loader = build_dataset("Data", dist_threshold=distance_threshold)
 
-val_data_list = build_graph_dataset(train_folder)
-val_loader = DataLoader(val_data_list, batch_size=batch_size, shuffle=True)
-
-model = TemporalGNN(node_features=1, periods=sequence_length, batch_size=batch_size).to(device)
+model = TemporalGNN(node_features=1).to(device)
+for param in model.parameters():
+    param.retain_grad()
 learning_rate = 0.01
 optimizer = torch.optim.AdamW(model.parameters(), lr=0.01, weight_decay=0.01, amsgrad=True)
 criterion = torch.nn.BCEWithLogitsLoss()

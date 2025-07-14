@@ -1,5 +1,6 @@
 import torch
 from tqdm import tqdm
+from torch_geometric_temporal.nn.recurrent import EvolveGCNO
 
 def save_checkpoint(model, optimizer, scheduler, epoch, train_losses, val_losses):
   checkpoint = {
@@ -23,52 +24,47 @@ def load_checkpoint(filepath, model, optimizer, scheduler):
     val_losses = checkpoint['val_losses']
     return model, optimizer, scheduler, start_epoch, train_losses, val_losses
 
-def train_loop(train_loader, model, criterion, optimizer, device, verbose=True):
+def train_loop(dataset, model, criterion, optimizer, device, verbose=True):
     model.train()
     total_loss = 0.0
-    num_batches = len(train_loader)
+    num_snapshots = 0
+    
+    for t, snapshot in enumerate(tqdm(dataset)):
+        snapshot.to(device)
 
-    for batch_idx, batch in enumerate(tqdm(train_loader)):
-        batch = batch.to(device)
+        model.recurrent = EvolveGCNO(1).to(device)
 
-        x = batch.x
-        edge_index = batch.edge_index
-        y = batch.y.float()
-
-        optimizer.zero_grad()
-        out = model(x, edge_index)
-        loss = criterion(out, y)
-
+        out = model(snapshot.x, snapshot.edge_index, snapshot.edge_attr)
+        loss = criterion(out, snapshot.y)
         loss.backward()
         optimizer.step()
+        optimizer.zero_grad()
 
         total_loss += loss.item()
+        num_snapshots += 1
 
-        if (batch_idx + 1) % 100 == 0 and verbose:
-            print(f"Batch {batch_idx+1}, Loss: {total_loss / (batch_idx + 1):.6f}")
+        if verbose and (t + 1) % 1000 == 0:
+            print(f"Snapshot {t+1}, Loss: {total_loss / num_snapshots:.6f}")
 
-    return total_loss / num_batches
+    return total_loss / max(1, num_snapshots)
 
-def val_loop(val_loader, model, criterion, device, verbose=False):
+def val_loop(dataset, model, criterion, device, verbose=False):
     model.eval()
     total_loss = 0.0
-    num_batches = len(val_loader)
+    num_snapshots = 0
 
     with torch.no_grad():
-        for batch_idx, batch in enumerate(val_loader):
-            batch = batch.to(device)
+        for t, snapshot in enumerate(dataset):
+            snapshot.to(device)
 
-            x = batch.x
-            edge_index = batch.edge_index
-            y = batch.y.float()
-
-            out = model(x, edge_index)
-            loss = criterion(out, y)
+            out = model(snapshot.x, snapshot.edge_index, snapshot.edge_attr)
+            loss = criterion(out, snapshot.y)
             total_loss += loss.item()
+            num_snapshots += 1
 
-            if verbose and (batch_idx + 1) % 50 == 0:
-                print(f"Val batch {batch_idx + 1}")
+            if verbose and (t + 1) % 100 == 0:
+                print(f"Val Snapshot {t + 1}")
                 print(f"Predictions: {torch.sigmoid(out[:3])}")
-                print(f"Targets:     {y[:3]}")
+                print(f"Targets:     {snapshot.y[:3]}")
 
-    return total_loss / num_batches
+    return total_loss / max(1, num_snapshots)
