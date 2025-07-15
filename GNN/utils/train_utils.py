@@ -32,7 +32,7 @@ def train_loop(dataset, model, criterion, optimizer, device, verbose=True):
     for t, snapshot in enumerate(tqdm(dataset)):
         snapshot.to(device)
 
-        model.recurrent = EvolveGCNO(1).to(device)
+        model.recurrent = EvolveGCNO(2).to(device)
 
         out = model(snapshot.x, snapshot.edge_index, snapshot.edge_attr)
         loss = criterion(out, snapshot.y)
