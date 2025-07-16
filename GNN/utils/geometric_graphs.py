@@ -5,6 +5,28 @@ from torch_geometric_temporal import temporal_signal_split
 from torch_geometric_temporal.signal import DynamicGraphTemporalSignal
 from scipy.spatial import distance_matrix
 
+def compute_distance(x, y, x_center=967, y_center=936):
+    return np.sqrt((x - x_center) ** 2 + (y - y_center) ** 2)
+
+def process_csv_file(path, x_center=967, y_center=936):
+    df = pd.read_csv(path)
+
+    df['store_distance'] = compute_distance(df['x_pixel'], df['y_pixel'], x_center, y_center)
+    df.to_csv(path, index=False)
+
+def process_all_partitions(root_dir=""):
+    for partition in os.listdir(root_dir):
+        partition_path = os.path.join(root_dir, partition)
+        labels_dir = os.path.join(partition_path, "labels")
+
+        if not os.path.isdir(labels_dir):
+            continue
+
+        for file in os.listdir(labels_dir):
+            if file.endswith(".csv"):
+                csv_path = os.path.join(labels_dir, file)
+                process_csv_file(csv_path)
+
 def process_csv(csv_path):
     df = pd.read_csv(csv_path).sort_values(by="node_id")
 
