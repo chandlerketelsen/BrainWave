@@ -63,7 +63,5 @@ def build_dynamic_dataset(root_dir, dist_threshold=75):
     )
 
     train_dataset, val_dataset = temporal_signal_split(dataset, train_ratio=0.8)
-    return train_dataset, val_dataset
-
-distance_threshold = 75
-train_dataset, val_dataset = build_dynamic_dataset("Data", dist_threshold=distance_threshold)
+    val_dataset, test_dataset = temporal_signal_split(val_dataset, train_ratio=0.5)
+    return train_dataset, val_dataset, test_dataset

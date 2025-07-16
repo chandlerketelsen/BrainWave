@@ -1,6 +1,5 @@
 import cv2
 import pandas as pd
-import os
 
 image_path = ""
 mask_path = ""
