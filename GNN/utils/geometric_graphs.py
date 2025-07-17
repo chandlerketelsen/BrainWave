@@ -4,20 +4,44 @@ import numpy as np
 from torch_geometric_temporal import temporal_signal_split
 from torch_geometric_temporal.signal import DynamicGraphTemporalSignal
 from scipy.spatial import distance_matrix
+from datetime import datetime
+import math
 
-def compute_distance(x, y, x_center=967, y_center=936):
+def compute_distance(x, y, x_center, y_center):
     return np.sqrt((x - x_center) ** 2 + (y - y_center) ** 2)
 
-def process_csv_file(path, x_center=967, y_center=936):
-    df = pd.read_csv(path)
+def extract_time_features_from_folder(folder_name):
+    try:
+        parts = folder_name.split("_")
+        timestamp_str = parts[1]
+        dt = datetime.strptime(timestamp_str, "%Y%m%d%H%M%S")
+
+        time_of_day = dt.hour + dt.minute / 60 + dt.second / 3600
+        normalized_time = time_of_day / 24.0
+
+        sin_time = math.sin(2 * math.pi * normalized_time)
+        cos_time = math.cos(2 * math.pi * normalized_time)
+
+        return sin_time, cos_time
+    except Exception as e:
+        print(f"Error parsing time from folder {folder_name}: {e}")
+        return 0.0, 0.0
+
+def process_csv_file(csv_path, folder_name):
+    df = pd.read_csv(csv_path)
 
     df['store_distance'] = compute_distance(df['x_pixel'], df['y_pixel'], x_center, y_center)
-    df.to_csv(path, index=False)
 
-def process_all_partitions(root_dir=""):
-    for partition in os.listdir(root_dir):
-        partition_path = os.path.join(root_dir, partition)
-        labels_dir = os.path.join(partition_path, "labels")
+    sin_time, cos_time = extract_time_features_from_folder(folder_name)
+    df['time_sin'] = sin_time
+    df['time_cos'] = cos_time
+
+    df.to_csv(csv_path, index=False)
+
+def process_all_partitions(root_dir):
+    for folder in os.listdir(root_dir):
+        folder_path = os.path.join(root_dir, folder)
+        labels_dir = os.path.join(folder_path, "labels")
 
         if not os.path.isdir(labels_dir):
             continue
@@ -25,7 +49,7 @@ def process_all_partitions(root_dir=""):
         for file in os.listdir(labels_dir):
             if file.endswith(".csv"):
                 csv_path = os.path.join(labels_dir, file)
-                process_csv_file(csv_path)
+                process_csv_file(csv_path, folder)
 
 def process_csv(csv_path):
     df = pd.read_csv(csv_path).sort_values(by="node_id")
@@ -34,7 +58,7 @@ def process_csv(csv_path):
     max_dist = df["store_distance"].max()
     df["store_distance_norm"] = (df["store_distance"] - min_dist) / (max_dist - min_dist + 1e-8)
 
-    features = df[["is_handicapped", "store_distance_norm"]].to_numpy().astype(np.float32)
+    features = df[["is_handicapped", "store_distance_norm", "time_sin", "time_cos"]].to_numpy().astype(np.float32)
     labels = df["is_occupied"].to_numpy().astype(np.float32)
     coords = df[["x_pixel", "y_pixel"]].to_numpy()
 

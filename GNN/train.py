@@ -13,7 +13,7 @@ sequence_length = 16
 
 train_dataset, val_dataset, test_dataset = build_dynamic_dataset("Data", dist_threshold=distance_threshold)
 
-model = TemporalGNN(node_features=2).to(device)
+model = TemporalGNN(node_features=4).to(device)
 for param in model.parameters():
     param.retain_grad()
 learning_rate = 0.01
