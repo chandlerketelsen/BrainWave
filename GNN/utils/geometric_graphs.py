@@ -4,35 +4,52 @@ import numpy as np
 from torch_geometric_temporal import temporal_signal_split
 from torch_geometric_temporal.signal import DynamicGraphTemporalSignal
 from scipy.spatial import distance_matrix
-from datetime import datetime
+from datetime import datetime, timedelta
 import math
 
 def compute_distance(x, y, x_center, y_center):
     return np.sqrt((x - x_center) ** 2 + (y - y_center) ** 2)
 
-def extract_time_features_from_folder(folder_name):
+def extract_base_time_from_folder(folder_name):
     try:
         parts = folder_name.split("_")
         timestamp_str = parts[1]
         dt = datetime.strptime(timestamp_str, "%Y%m%d%H%M%S")
-
-        time_of_day = dt.hour + dt.minute / 60 + dt.second / 3600
-        normalized_time = time_of_day / 24.0
-
-        sin_time = math.sin(2 * math.pi * normalized_time)
-        cos_time = math.cos(2 * math.pi * normalized_time)
-
-        return sin_time, cos_time
+        return dt
     except Exception as e:
-        print(f"Error parsing time from folder {folder_name}: {e}")
-        return 0.0, 0.0
+        print(f"Error parsing base time from folder {folder_name}: {e}")
+        return None
 
-def process_csv_file(csv_path, folder_name):
+def extract_frame_number(file_name):
+    try:
+        parts = file_name.split("_")
+        frame_str = parts[2]  # e.g., 0001
+        return int(frame_str)
+    except Exception as e:
+        print(f"Error parsing frame number from file {file_name}: {e}")
+        return 0
+
+def compute_time_features_from_datetime(dt):
+    time_of_day = dt.hour + dt.minute / 60 + dt.second / 3600
+    normalized_time = time_of_day / 24.0
+    sin_time = math.sin(2 * math.pi * normalized_time)
+    cos_time = math.cos(2 * math.pi * normalized_time)
+    return sin_time, cos_time
+
+def process_csv_file(csv_path, folder_name, file_name, x_center=967, y_center=936):
     df = pd.read_csv(csv_path)
 
     df['store_distance'] = compute_distance(df['x_pixel'], df['y_pixel'], x_center, y_center)
 
-    sin_time, cos_time = extract_time_features_from_folder(folder_name)
+    base_time = extract_base_time_from_folder(folder_name)
+    frame_number = extract_frame_number(file_name)
+
+    if base_time is None:
+        sin_time, cos_time = 0.0, 0.0
+    else:
+        frame_time = base_time + timedelta(seconds=frame_number)
+        sin_time, cos_time = compute_time_features_from_datetime(frame_time)
+
     df['time_sin'] = sin_time
     df['time_cos'] = cos_time
 
@@ -49,7 +66,7 @@ def process_all_partitions(root_dir):
         for file in os.listdir(labels_dir):
             if file.endswith(".csv"):
                 csv_path = os.path.join(labels_dir, file)
-                process_csv_file(csv_path, folder)
+                process_csv_file(csv_path, folder, file)
 
 def process_csv(csv_path):
     df = pd.read_csv(csv_path).sort_values(by="node_id")
