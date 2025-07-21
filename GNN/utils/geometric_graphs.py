@@ -2,7 +2,7 @@ import os
 import pandas as pd
 import numpy as np
 from torch_geometric_temporal import temporal_signal_split
-from torch_geometric_temporal.signal import DynamicGraphTemporalSignal
+from torch_geometric_temporal.signal import DynamicGraphTemporalSignalBatch
 from scipy.spatial import distance_matrix
 from datetime import datetime, timedelta
 import math
@@ -81,27 +81,21 @@ def process_csv(csv_path):
 
     return features, labels, coords
 
-def build_dynamic_dataset(root_dir, dist_threshold=75):
+def build_dynamic_dataset(root_dir, batch_size=32, dist_threshold=75):
     csv_paths = sorted([
         os.path.join(subdir, file)
         for subdir, _, files in os.walk(root_dir)
         for file in files if file.endswith(".csv") and file != "nodes.csv"
     ])
 
-    features_list = []
-    targets_list = []
-    edge_indices_list = []
-    edge_weights_list = []
-
-    sigma = dist_threshold / 2
-
-    for path in csv_paths:
+    def build_graph(path):
         x, y, coords = process_csv(path)
 
         dist_mat = distance_matrix(coords, coords)
-        
         edge_list = []
         edge_weights = []
+
+        sigma = dist_threshold / 2
 
         for i in range(len(coords)):
             for j in range(len(coords)):
@@ -112,19 +106,50 @@ def build_dynamic_dataset(root_dir, dist_threshold=75):
 
         edge_index = np.array(edge_list).T.astype(np.int64)
         edge_weight = np.array(edge_weights, dtype=np.float32)
+        return x, y, edge_index, edge_weight
 
-        features_list.append(x)
-        targets_list.append(y)
-        edge_indices_list.append(edge_index)
-        edge_weights_list.append(edge_weight)
+    x_all, y_all, ei_all, ew_all = [], [], [], []
+    for path in csv_paths:
+        x, y, ei, ew = build_graph(path)
+        x_all.append(x)
+        y_all.append(y)
+        ei_all.append(ei)
+        ew_all.append(ew)
 
-    dataset = DynamicGraphTemporalSignal(
-        edge_indices=edge_indices_list,
-        edge_weights=edge_weights_list,
-        features=features_list,
-        targets=targets_list,
+    batched_x, batched_y, batched_ei, batched_ew, batched_batch = [], [], [], [], []
+
+    for i in range(0, len(x_all), batch_size):
+        x_batch = []
+        y_batch = []
+        ei_batch = []
+        ew_batch = []
+        batch_idx = []
+
+        node_offset = 0
+        for j, (x, y, ei, ew) in enumerate(zip(x_all[i:i + batch_size], y_all[i:i + batch_size],
+                                               ei_all[i:i + batch_size], ew_all[i:i + batch_size])):
+            x_batch.append(x)
+            y_batch.append(y)
+            ei_batch.append(ei + node_offset)
+            ew_batch.append(ew)
+            batch_idx.append(np.full((x.shape[0],), j, dtype=np.int64))
+            node_offset += x.shape[0]
+
+        batched_x.append(np.vstack(x_batch))
+        batched_y.append(np.hstack(y_batch))
+        batched_ei.append(np.hstack(ei_batch))
+        batched_ew.append(np.hstack(ew_batch))
+        batched_batch.append(np.hstack(batch_idx))
+
+    dataset = DynamicGraphTemporalSignalBatch(
+        edge_indices=batched_ei,
+        edge_weights=batched_ew,
+        features=batched_x,
+        targets=batched_y,
+        batches=batched_batch,
     )
 
     train_dataset, val_dataset = temporal_signal_split(dataset, train_ratio=0.8)
     val_dataset, test_dataset = temporal_signal_split(val_dataset, train_ratio=0.5)
+
     return train_dataset, val_dataset, test_dataset
