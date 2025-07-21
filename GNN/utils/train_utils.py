@@ -24,45 +24,47 @@ def load_checkpoint(filepath, model, optimizer, scheduler):
     val_losses = checkpoint['val_losses']
     return model, optimizer, scheduler, start_epoch, train_losses, val_losses
 
-def train_loop(dataset, model, criterion, optimizer, device, verbose=True):
+def train_loop(loader, model, criterion, optimizer, device, verbose=True):
     model.train()
     total_loss = 0.0
-    num_snapshots = 0
-    
-    for t, snapshot in enumerate(tqdm(dataset)):
+    num_batches = 0
+
+    for t, snapshot in enumerate(tqdm(loader)):
         snapshot = snapshot.to(device)
 
         out = model(snapshot.x, snapshot.edge_index, snapshot.edge_attr)
-        loss = criterion(out, snapshot.y)
+        loss = criterion(out, snapshot.y.float())
+
+        optimizer.zero_grad()
         loss.backward()
         optimizer.step()
-        optimizer.zero_grad()
 
         total_loss += loss.item()
-        num_snapshots += 1
+        num_batches += 1
 
-        if verbose and (t + 1) % 1000 == 0:
-            print(f"Snapshot {t+1}, Loss: {total_loss / num_snapshots:.6f}")
+        if verbose and (t + 1) % 100 == 0:
+            print(f"Batch {t + 1}, Loss: {total_loss / num_batches:.6f}")
 
-    return total_loss / max(1, num_snapshots)
+    return total_loss / max(1, num_batches)
 
-def val_loop(dataset, model, criterion, device, verbose=False):
+def val_loop(loader, model, criterion, device, verbose=False):
     model.eval()
     total_loss = 0.0
-    num_snapshots = 0
+    num_batches = 0
 
     with torch.no_grad():
-        for t, snapshot in enumerate(dataset):
-            snapshot.to(device)
+        for t, snapshot in enumerate(loader):
+            snapshot = snapshot.to(device)
 
             out = model(snapshot.x, snapshot.edge_index, snapshot.edge_attr)
-            loss = criterion(out, snapshot.y)
+            loss = criterion(out, snapshot.y.float())
+
             total_loss += loss.item()
-            num_snapshots += 1
+            num_batches += 1
 
-            if verbose and (t + 1) % 100 == 0:
-                print(f"Val Snapshot {t + 1}")
-                print(f"Predictions: {torch.sigmoid(out[:3])}")
-                print(f"Targets:     {snapshot.y[:3]}")
+            if verbose and (t + 1) % 50 == 0:
+                print(f"Val Batch {t + 1}")
+                print(f"Preds:  {torch.sigmoid(out[:3])}")
+                print(f"Target: {snapshot.y[:3]}")
 
-    return total_loss / max(1, num_snapshots)
+    return total_loss / max(1, num_batches)

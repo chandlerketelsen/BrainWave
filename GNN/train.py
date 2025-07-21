@@ -9,7 +9,6 @@ epochs = 30
 device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 
 distance_threshold = 75
-sequence_length = 16
 
 train_dataset, val_dataset, test_dataset = build_dynamic_dataset("Data", dist_threshold=distance_threshold)
 
