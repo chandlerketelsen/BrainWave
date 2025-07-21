@@ -1,4 +1,5 @@
 /utils/Data
+/utils/synthetic_graphs
 *.csv
 *.jpg
 *.png
